@@ -1,24 +1,24 @@
 {
-  "name": "oam-design-system",
+  "name": "hot-design-system",
   "version": "1.0.0",
-  "description": "OpenAerialMap Design System",
+  "description": "HOT Design System",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hotosm/oam-design-system.git"
+    "url": "https://github.com/hotosm/hot-design-system.git"
   },
   "author": {
-    "name": "Development Seed",
-    "url": "https://developmentseed.org"
+    "name": "Humanitarian OpenStreetMap Team",
+    "url": "https://hotosm.org"
   },
   "license": "BSD 3-Clause",
   "bugs": {
-    "url": "https://github.com/hotosm/oam-design-system/issues"
+    "url": "https://github.com/hotosm/hot-design-system/issues"
   },
-  "homepage": "http://docs.openaerialmap.org/",
+  "homepage": "http://hotosm.org/",
   "main": "assets/scripts",
   "scripts": {
-    "serve": "gulp oam:icons && gulp collecticons && gulp serve",
-    "oam-icons": "gulp oam:icons",
+    "serve": "gulp hot:icons && gulp collecticons && gulp serve",
+    "hot-icons": "gulp hot:icons",
     "lint": "eslint sandbox/assets/scripts/ assets/scripts --ext .js",
     "test": "echo \"No tests\" && exit 0"
   },

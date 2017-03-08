@@ -109,6 +109,6 @@
 .panel__button-dismiss {
   @extend .button, .button--base-unbounded, .button--small, .button--text-hidden;
   &:before {
-    @extend %oam-ds-icon-sm-xmark;
+    @extend %hot-ds-icon-sm-xmark;
   }
 }
