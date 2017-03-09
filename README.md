@@ -1,6 +1,6 @@
 # HOT Design System
 
-An experiment to start a HOT Design System. Forked from the `hot-design-system`.
+**An early attempt to start a HOT Design System.** Forked from the `oam-design-system`. Purpose is meant to follow the `oam-design-system` UI style but brand specifically for the HOT logo and colors.
 
 The following guide only explains how to include the `hot-design-system` in a new project. For usage information check the [documentation website](http://hotosm.github.io/hot-docs/).  
 
@@ -18,7 +18,7 @@ For the most recent version omit the tag.
 
 **Note:**
 This design system makes some assumptions which are described below for each of the elements.  
-Check the build system of [hot docs](https://github.com/hotosm/hot-docs/blob/master/gulpfile.js), a project that uses the `hot-design-system`.
+Check the build system of [oam docs](https://github.com/hotosm/oam-docs/blob/master/gulpfile.js), a project that uses the `oam-design-system`.
 
 ## Overview
 
@@ -102,4 +102,4 @@ Just include the images using the path `assets/graphics/[graphic-type]/[graphic-
 All available images can be found [here](assets/graphics/).
 
 ## License
-hot Design System is licensed under **BSD 3-Clause License**, see the [LICENSE](LICENSE) file for more details.
+HOT Design System is licensed under **BSD 3-Clause License**, see the [LICENSE](LICENSE) file for more details.
