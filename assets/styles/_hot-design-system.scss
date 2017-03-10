@@ -16,50 +16,50 @@
  * http://necolas.github.io/normalize.css/
  */
 
-@import "oam-design-system/normalize";
+@import "hot-design-system/normalize";
 
 /**
  * Kenneth Ormandy's OpenType features—ligatures, kerning, and more—to Normalize.css:
  * https://github.com/kennethormandy/normalize-opentype.css
  */
 
-@import "oam-design-system/normalize-opentype";
+@import "hot-design-system/normalize-opentype";
 
 
 /* Settings
    ========================================================================== */
 
-@import "oam-design-system/variables";
-@import "oam-design-system/functions";
-@import "oam-design-system/mixins";
+@import "hot-design-system/variables";
+@import "hot-design-system/functions";
+@import "hot-design-system/mixins";
 
 
 /* Core
    ========================================================================== */
 
-@import "oam-design-system/base";
-@import "oam-design-system/typography";
-@import "oam-design-system/tables";
-@import "oam-design-system/code";
-@import "oam-design-system/media";
-@import "oam-design-system/oam-ds-icons";
-@import "oam-design-system/utilities";
+@import "hot-design-system/base";
+@import "hot-design-system/typography";
+@import "hot-design-system/tables";
+@import "hot-design-system/code";
+@import "hot-design-system/media";
+@import "hot-design-system/hot-ds-icons";
+@import "hot-design-system/utilities";
 
 
 /* Components
    ========================================================================== */
 
-@import "oam-design-system/buttons";
-@import "oam-design-system/forms";
-@import "oam-design-system/drops";
-@import "oam-design-system/panels";
-@import "oam-design-system/alerts";
-@import "oam-design-system/modals";
-@import "oam-design-system/layout";
-@import "oam-design-system/constructs";
+@import "hot-design-system/buttons";
+@import "hot-design-system/forms";
+@import "hot-design-system/drops";
+@import "hot-design-system/panels";
+@import "hot-design-system/alerts";
+@import "hot-design-system/modals";
+@import "hot-design-system/layout";
+@import "hot-design-system/constructs";
 
 
 /* Third-party components
    ========================================================================== */
 
-@import "oam-design-system/third-party/react-scrollbar";
+@import "hot-design-system/third-party/react-scrollbar";

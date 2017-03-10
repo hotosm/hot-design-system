@@ -38,7 +38,7 @@
 
   /* Icon handling */
   &::before, &::after,
-  [class^="oam-ds-icon-"], [class*=" oam-ds-icon-"],
+  [class^="hot-ds-icon-"], [class*=" hot-ds-icon-"],
   [class^="collecticons-"], [class*=" collecticons-"] {
     font-size: 1rem;
   }
@@ -170,7 +170,7 @@
   &::after {
     margin: 0;
   }
-  > *:not([class^="oam-ds-icon-"]):not([class*=" oam-ds-icon-"]):not([class^="collecticons-"]):not([class*=" collecticons-"]) {
+  > *:not([class^="hot-ds-icon-"]):not([class*=" hot-ds-icon-"]):not([class^="collecticons-"]):not([class*=" collecticons-"]) {
     @extend .visually-hidden;
   }
   :not(.button-group) & {

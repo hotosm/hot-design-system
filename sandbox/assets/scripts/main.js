@@ -1,11 +1,11 @@
 'use strict';
 import React from 'react';
 import { render } from 'react-dom';
-import OAM from '../../../assets/scripts/index';
-var { Modal, ModalHeader, ModalBody, ModalFooter } = OAM.Modal;
-var ScrollArea = OAM.ScrollArea;
+import HOT from '../../../assets/scripts/index';
+var { Modal, ModalHeader, ModalBody, ModalFooter } = HOT.Modal;
+var ScrollArea = HOT.ScrollArea;
 
-OAM.hello();
+HOT.hello();
 
 var ModalShowcase = React.createClass({
   displayName: 'ModalShowcase',
