@@ -44,25 +44,25 @@
 .alert--success {
   &:before {
     background: rgba($success-color, 0.92);
-    @extend %oam-ds-icon-circle-tick;
+    @extend %hot-ds-icon-circle-tick;
   }
 }
 .alert--info {
   &:before {
     background: rgba($info-color, 0.92);
-    @extend %oam-ds-icon-circle-information;
+    @extend %hot-ds-icon-circle-information;
   }
 }
 .alert--warning {
   &:before {
     background: rgba($warning-color, 0.92);
-    @extend %oam-ds-icon-circle-exclamation;
+    @extend %hot-ds-icon-circle-exclamation;
   }
 }
 .alert--danger {
   &:before {
     background: rgba($danger-color, 0.92);
-    @extend %oam-ds-icon-circle-xmark;
+    @extend %hot-ds-icon-circle-xmark;
   }
 }
 
@@ -95,6 +95,6 @@
     opacity: 1;
   }
   &:before {
-    @extend %oam-ds-icon-sm-xmark;
+    @extend %hot-ds-icon-sm-xmark;
   }
 }

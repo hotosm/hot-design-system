@@ -10,7 +10,7 @@
 .drop__toggle {
   &--caret {
     &:after {
-      @extend %oam-ds-icon-sm-chevron-down;
+      @extend %hot-ds-icon-sm-chevron-down;
       font-size: 1rem;
       line-height: inherit;
       vertical-align: top;
@@ -318,7 +318,7 @@
     outline: 0;
     font-weight: $base-font-bold;
     &:after {
-      @extend %oam-ds-icon-sm-tick;
+      @extend %hot-ds-icon-sm-tick;
       position: absolute;
       z-index: 1;
       top: $global-spacing / 4;
@@ -338,7 +338,7 @@
   .drop__menu-item {
     padding-left: $global-spacing * 2.75;
     &:before,
-    > [class^="oam-ds-icon-"],
+    > [class^="hot-ds-icon-"],
     > [class^="collecticons-"] {
       position: absolute;
       z-index: 1;

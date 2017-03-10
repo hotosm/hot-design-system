@@ -330,7 +330,7 @@ label[for] {
     }
 
     &:before {
-      @extend %oam-ds-icon-sm-tick;
+      @extend %hot-ds-icon-sm-tick;
       color: rgba($base-color, 0.80);
     }
   }

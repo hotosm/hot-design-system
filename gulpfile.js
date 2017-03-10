@@ -11,9 +11,12 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
+var exit = require('gulp-exit');
+var rev = require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
 var notifier = require('node-notifier');
 var cp = require('child_process');
-var OAM_ADDONS = require('./gulp-addons');
+var HOT_ADDONS = require('./gulp-addons');
 
 // /////////////////////////////////////////////////////////////////////////////
 // --------------------------- Variables -------------------------------------//
@@ -43,7 +46,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
       routes: {
         '/node_modules': './node_modules'
       },
-      middleware: OAM_ADDONS.graphicsMiddleware(fs)
+      middleware: HOT_ADDONS.graphicsMiddleware(fs)
     }
   });
 
@@ -54,7 +57,7 @@ gulp.task('serve', ['vendorScripts', 'javascript', 'styles'], function () {
     '!sandbox/assets/graphics/collecticons/**/*'
   ], [reload]);
 
-  gulp.watch('assets/icons/**', ['oam:icons']);
+  gulp.watch('assets/icons/**', ['hot:icons']);
   gulp.watch('sandbox/assets/graphics/collecticons/**', ['collecticons']);
 
   gulp.watch(['sandbox/assets/styles/**/*.scss', 'assets/styles/**/*.scss'], ['styles']);
@@ -66,6 +69,14 @@ gulp.task('clean', function () {
     .then(function () {
       $.cache.clearAll();
     });
+});
+
+gulp.task('build', ['vendorScripts', 'javascript'], function () {
+  gulp.start(['html', 'images', 'fonts', 'extras'], function () {
+    return gulp.src('dist/**/*')
+      .pipe($.size({title: 'build', gzip: true}))
+      .pipe(exit());
+  });
 });
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -96,6 +107,9 @@ gulp.task('javascript', function () {
           message: e.message
         });
         console.log('Javascript error:', e);
+        if (prodBuild) {
+          process.exit(1);
+        }
         // Allows the watch to continue.
         this.emit('end');
       })
@@ -161,22 +175,22 @@ gulp.task('collecticons', function (done) {
 });
 
 // /////////////////////////////////////////////////////////////////////////////
-// ------------------------- OAM icons tasks ---------------------------------//
+// ------------------------- hot icons tasks ---------------------------------//
 // -------------------- (Font generation related) ----------------------------//
 // ---------------------------------------------------------------------------//
-gulp.task('oam:icons', function (done) {
+gulp.task('hot:icons', function (done) {
   var args = [
     'node_modules/collecticons-processor/bin/collecticons.js',
     'compile',
     'assets/icons/',
     '--font-embed',
     '--font-dest', 'assets/fonts',
-    '--font-name', 'OAM DS Icons',
+    '--font-name', 'hot DS Icons',
     '--font-types', 'woff',
     '--style-format', 'sass',
-    '--style-dest', 'assets/styles/oam-design-system',
-    '--style-name', 'oam-ds-icons',
-    '--class-name', 'oam-ds-icon',
+    '--style-dest', 'assets/styles/hot-design-system',
+    '--style-name', 'hot-ds-icons',
+    '--class-name', 'hot-ds-icon',
     '--author-name', 'Development Seed',
     '--author-url', 'https://developmentseed.org/',
     '--no-preview'
@@ -210,4 +224,46 @@ gulp.task('styles', function () {
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/assets/styles'))
     .pipe(reload({stream: true}));
+});
+
+gulp.task('html', ['styles'], function () {
+  return gulp.src('sandbox/*.html')
+    .pipe($.useref({searchPath: ['.tmp', 'sandbox', '.']}))
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.css', $.csso()))
+    .pipe($.if(/\.(css|js)$/, rev()))
+    .pipe(revReplace())
+    .pipe(gulp.dest('dist'));
+});
+
+// Compress images.
+gulp.task('images', function () {
+  return gulp.src(['sandbox/assets/graphics/**/*', HOT_ADDONS.graphicsPath + '/**/*'])
+    .pipe($.cache($.imagemin({
+      progressive: true,
+      interlaced: true,
+      // don't remove IDs from SVGs, they are often used
+      // as hooks for embedding and styling
+      svgoPlugins: [{cleanupIDs: false}]
+    })))
+    .pipe(gulp.dest('dist/assets/graphics'));
+});
+
+gulp.task('fonts', function () {
+  return gulp.src('sandbox/assets/fonts/**/*')
+    .pipe(gulp.dest('.tmp/assets/fonts'))
+    .pipe(gulp.dest('dist/assets/fonts'));
+});
+
+gulp.task('extras', function () {
+  return gulp.src([
+    'sandbox/**/*',
+    '!sandbox/*.html',
+    '!sandbox/assets/graphics/**',
+    '!sandbox/assets/vendor/**',
+    '!sandbox/assets/styles/**',
+    '!sandbox/assets/scripts/**'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist'));
 });
