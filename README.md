@@ -8,7 +8,9 @@ For information on how to develop the `hot-design-system` checkout the [DEVELOPM
 
 ---
 
-Style guide and UI components library that aims to standardize the look and feel across all hot-related applications, while defining coding best practices and conventions.
+Style guide and UI components library that aims to standardize the look and feel across all HOT-related applications, while defining coding best practices and conventions.
+
+Only non-destructible changes should be integrated into the design system. The design system welcomes any changes that do not break existing styles, that can be reused in other projects, or adds to the overall functionality of the design system. Changes that break overall styles or styles for a specific implementation should be contained within the specific application or project repo.
 
 Install it as an `npm` module: (module not available yet. use direct link)
 ```
